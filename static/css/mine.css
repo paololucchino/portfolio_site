@@ -1,0 +1,59 @@
+.project-section  {
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: 100%;
+}
+
+#hero-area .contents h1 {
+    font-size: 38px;
+
+}
+
+#hero-area .contents p {
+    font-size: 28px;
+
+}
+
+.top-nav-fixed {
+  -webkit-animation-duration: 0s;
+  animation-duration: 0s;
+  -webkit-animation-fill-mode: both;
+  animation-fill-mode: both;
+  -webkit-animation-name: fadeInDown;
+  animation-name: fadeInDown;
+  background: #fff !important;
+}
+
+
+#hero-area:before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: .5;
+  display: inline-block;
+  background: rgba(110, 100, 0, 0.1) url("https://www.streetbees.com/assets/hivepattern-68406b882c1cd4cfbe2bc5a493d7562ba5baaae76d27009c1c6888b4f6383060.png") 0 0 repeat;
+                background: rgba(110, 100, 0, 0.2) url("http://www.transparenttextures.com/patterns/ice-age.png") 0 0 repeat;
+                                background: rgba(110, 100, 0, 0.2) url("http://www.transparenttextures.com/patterns/noisy-grid.png") 0 0 repeat;
+                                                 background: rgba(110, 100, 0, 0.2) url("http://www.transparenttextures.com/patterns/random-grey-variations.png") 0 0 repeat;
+
+
+  background: rgba(110, 100, 0, 0.2) url("http://www.transparenttextures.com/patterns/binding-dark.png") 0 0 repeat;
+
+
+        background: rgba(110, 100, 0, 0.2) url("http://www.transparenttextures.com/patterns/bright-squares.png") 0 0 repeat;
+
+    background: rgba(110, 100, 0, 0.2) url("http://www.transparenttextures.com/patterns/3px-tile.png") 0 0 repeat;
+        background: rgba(110, 100, 0, 0.2) url("http://www.transparenttextures.com/patterns/squared-metal.png") 0 0 repeat;
+
+
+
+
+}
+#hero-area {
+ background: url(../img/5558581585_ae1bbc86f9_o.jpg) fixed no-repeat;
+  background-size: 100%;
+
+}

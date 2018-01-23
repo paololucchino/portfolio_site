@@ -1,0 +1,26 @@
+{% extends "fixed_base.html" %}
+   {% block title %}My Blog{% endblock %}
+   {% block content %}
+ </header>
+<section id="projects" class="section">
+      <div class="container">
+     <h1>My Projects</h1>
+ {% if tag %}
+     <h2>Projects tagged with "{{ tag.name }}"</h2>
+{% endif %}
+     {% for project in projects %}
+       <h2>
+         <a href="{{ project.get_absolute_url }}">
+           {{ project.title }}
+         </a>
+       </h2>
+       <p class="date">
+         Published {{ project.start_date }}
+       </p>
+       {{ project.body|truncatewords:30|linebreaks }}
+     {% endfor %}
+    {% include "pagination.html" with page=projects %}
+
+      </div>
+</section>
+   {% endblock %}

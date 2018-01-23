@@ -1,0 +1,8 @@
+Django==1.8.6
+pytz==2017.3
+django-taggit==0.17.1
+dj-database-url==0.4.2
+gunicorn==19.7.1
+Pillow==5.0.0
+psycopg2==2.7.3.2
+whitenoise==3.3.1

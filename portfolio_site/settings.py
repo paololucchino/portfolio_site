@@ -26,12 +26,12 @@ SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY', 'r8+a@(fsobo-5(7w8yqzz^-wj*^66h
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = bool( os.environ.get('DJANGO_DEBUG', True) )
 
-ALLOWED_HOSTS = ['polar-escarpment-63178.herokuapp.com','127.0.0.1']
+ALLOWED_HOSTS = ['whispering-shore-29002.herokuapp.com','127.0.0.1']
 
 
 # Application definition
 
-INSTALLED_APPS = (
+INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -41,20 +41,20 @@ INSTALLED_APPS = (
     'blog',
     'taggit',
     'projects',
-)
+    'storages',
+]
 
-MIDDLEWARE_CLASSES = (
+
+MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
-    'django.contrib.auth.middleware.SessionAuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-
-)
+]
 
 ROOT_URLCONF = 'portfolio_site.urls'
 
@@ -76,6 +76,23 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'portfolio_site.wsgi.application'
 
+# Password validation
+# https://docs.djangoproject.com/en/2.0/ref/settings/#auth-password-validators
+
+AUTH_PASSWORD_VALIDATORS = [
+    {
+        'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
+    },
+    {
+        'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator',
+    },
+    {
+        'NAME': 'django.contrib.auth.password_validation.CommonPasswordValidator',
+    },
+    {
+        'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
+    },
+]
 
 # Database
 # https://docs.djangoproject.com/en/1.8/ref/settings/#databases
@@ -125,9 +142,11 @@ STATICFILES_DIRS = (
 # https://warehouse.python.org/project/whitenoise/
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
-MEDIA_ROOT = (
-    os.path.join(BASE_DIR, "media/")
-)
 
-
-MEDIA_URL = '/media/'
+DEFAULT_FILE_STORAGE = 'storages.backends.s3boto.S3BotoStorage'
+AWS_S3_SECURE_URLS = False       # use http instead of https
+AWS_QUERYSTRING_AUTH = False     # don't add complex authentication-related query parameters for requests
+AWS_STORAGE_BUCKET_NAME = 'portfolio-site-storage'
+#AWS KEY ID and SECRET KEY MUST EXIST AS ENVIRONMENT VARIABLES
+AWS_S3_ACCESS_KEY_ID = os.environ.get('AWS_S3_ACCESS_KEY_ID', None)
+AWS_S3_SECRET_ACCESS_KEY = os.environ.get('AWS_S3_SECRET_ACCESS_KEY', None)

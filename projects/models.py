@@ -1,6 +1,6 @@
 from django.db import models
 from django.utils import timezone
-from django.core.urlresolvers import reverse
+from django.urls import reverse
 from taggit.managers import TaggableManager
 
 # Create your models here.
@@ -41,6 +41,16 @@ class PublishedManager(models.Manager):
         return super(PublishedManager,self).get_queryset().filter(status='published')
 
 
+def build_timestamped_filename(instance, filename):
+    import os
+    filename_base, filename_ext = os.path.splitext(filename)
+    return '%s%s%s' % (
+        timezone.now().strftime("%Y%m%d%H%M%S"),
+        filename_base,
+        filename_ext.lower(),
+    )
+
+
 class Project(models.Model):
     STATUS_CHOICES = (
        ('draft', 'Draft'),
@@ -50,7 +60,7 @@ class Project(models.Model):
     title = models.CharField(max_length=250)
     slug = models.SlugField(max_length=250, unique_for_date='start_date')
     body = models.TextField()
-    image = models.ImageField(blank=True)
+    image = models.ImageField(upload_to=build_timestamped_filename, blank=True)
 
     start_date = models.DateField(default=timezone.now)
     end_date = models.DateField(default=timezone.now, blank=True, null=True)

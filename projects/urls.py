@@ -1,13 +1,13 @@
-from django.conf.urls import url
+from django.urls import path
 
 from . import views
 
+
+app_name = 'projects'
+
 urlpatterns = [
     # post views
-    url(r'^$', views.project_list, name='project_list'),
-    url(r'^(?P<project_slug>[-\w]+)/$',
-        views.project_detail,
-        name='project_detail'),
-    url(r'^tag/(?P<tag_slug>[-\w]+)/$', views.project_list,
-        name='project_list_by_tag'),
+    path('', views.project_list, name='project_list'),
+    path('<slug:project_slug>/', views.project_detail, name='project_detail'),
+    path('tag/<slug:tag_slug>/', views.project_list, name='project_list_by_tag'),
 ]

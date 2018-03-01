@@ -1,16 +1,11 @@
-.project-section  {
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-    background-size: 100%;
-}
 
 #hero-area .contents h1 {
-    font-size: 38px;
+    font-size: 2.8em;
 
 }
 
 #hero-area .contents p {
-    font-size: 28px;
+    font-size: 1.7em;
 
 }
 
@@ -45,6 +40,12 @@
 
 }
 
+.project-section  {
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: 100%;
+    min-height: 800px;
+}
 
 #project-info-box {
     /*
@@ -56,11 +57,27 @@
     padding: 40px;
 }
 
+#project-info-box h1 {
+    text-align:center;
+}
+
 #project-image-bg {
 
     min-height:15em;
 }
 
+.tag {
+    color: #fff !important;
+    background: #61D2B4;
+    padding: 0 22px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    line-height: 40px;
+    border-radius: 30px;
+    -webkit-transition: all 0.3s ease-in-out;
+    -moz-transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
+    }
 
 
 #hero-area {

@@ -58,6 +58,7 @@ class Project(models.Model):
     )
 
     title = models.CharField(max_length=250)
+    subtitle = models.CharField(max_length=250, null=True)
     slug = models.SlugField(max_length=250, unique_for_date='start_date')
     body = models.TextField()
     image = models.ImageField(upload_to=build_timestamped_filename, blank=True)

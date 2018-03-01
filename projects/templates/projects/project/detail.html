@@ -14,38 +14,50 @@
      <div id="project-image-bg" class="col-md-4"></div>
      <div id="project-info-box" class="col-md-8 ">
      <h1>{{ project.title }}</h1>
-        <p class="tags">
-         Tags:
+          <h3>{{ project.subtitle }}</h3>
+
+            <div class="row justify-content-center"  >
+
          {% for tag in project.tags.all %}
-           <a href="{% url "projects:project_list_by_tag" tag.slug %}">
+         <a href="{% url "projects:project_list_by_tag" tag.slug %}">
+         <div class="tag">
              {{ tag.name }}
-           </a>
+         </div>
+         </a>
            {% if not forloop.last %}, {% endif %}
          {% endfor %}
-        </p>
+     </div>
+
         {{ project.body|linebreaks }}
 
-         <div class="row" >
+         <div class="row justify-content-center"  >
              {% if project.publication_url %}
+              <a href="{{ project.publication_url }}">
             <div class="item-boxes">
                 <div class="icon">
                 <i class="lnr lnr-book"></i>
                 </div>
             </div>
+              </a>
              {% endif %}
              {% if project.code_url %}
+             <a href="{{ project.code_url }}">
             <div class="item-boxes">
                 <div class="icon">
                 <i class="lnr lnr-code"></i>
                 </div>
+
             </div>
+             </a>
              {% endif %}
              {% if project.external_url %}
+              <a href="{{ project.external_url }}">
             <div class="item-boxes">
                 <div class="icon">
                 <i class="lnr lnr-link"></i>
                 </div>
             </div>
+                   </a>
              {% endif %}
              </div>
      </div>
